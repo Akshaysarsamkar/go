@@ -1,0 +1,104 @@
+Write a program in GO language to accept the book details such as BookID, Title, Author, Price. 
+Read and display the details of ‘n’ number of books
+package main
+import "fmt"
+type Book struct {
+ BookID int
+ Title string
+ Author string
+ Price float64
+}
+func main() {
+ var n int
+ fmt.Print("Enter the number of books: ")
+ fmt.Scanln(&n)
+ books := make([]Book, n)
+ 
+ for i := 0; i < n; i++ {
+ fmt.Printf("Enter details for Book %d:\n", i+1)
+ fmt.Print("BookID: ")
+ fmt.Scanln(&books[i].BookID)
+ fmt.Print("Title: ")
+ fmt.Scanln(&books[i].Title)
+ fmt.Print("Author: ")
+ fmt.Scanln(&books[i].Author)
+ fmt.Print("Price: ")
+ fmt.Scanln(&books[i].Price)
+ }
+ fmt.Println("\nBook Details:")
+ for i := 0; i < n; i++ {
+ fmt.Printf("Book %d\n", i+1)
+ fmt.Println("BookID:", books[i].BookID)
+ fmt.Println("Title:", books[i].Title)
+ fmt.Println("Author:", books[i].Author)
+ fmt.Println("Price:", books[i].Price)
+ fmt.Println()
+ }
+}
+
+
+ Write a program in GO language to create an interface shape that
+includes area and perimeter. Implements these methods in circle
+and rectangle type.
+
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+// Define the interface Shape
+type Shape interface {
+	Area() float64
+	Perimeter() float64
+}
+
+// Define the struct Circle
+type Circle struct {
+	Radius float64
+}
+
+// Define the struct Rectangle
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
+
+// Implement the Area method for Circle
+func (c Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
+}
+
+// Implement the Perimeter method for Circle
+func (c Circle) Perimeter() float64 {
+	return 2 * math.Pi * c.Radius
+}
+
+// Implement the Area method for Rectangle
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
+}
+
+// Implement the Perimeter method for Rectangle
+func (r Rectangle) Perimeter() float64 {
+	return 2*r.Width + 2*r.Height
+}
+
+func main() {
+	// Create a circle
+	circle := Circle{Radius: 5}
+
+	// Create a rectangle
+	rectangle := Rectangle{Width: 4, Height: 3}
+
+	// Calculate and print area and perimeter for circle
+	fmt.Println("Circle:")
+	fmt.Println("Area:", circle.Area())
+	fmt.Println("Perimeter:", circle.Perimeter())
+
+	// Calculate and print area and perimeter for rectangle
+	fmt.Println("\nRectangle:")
+	fmt.Println("Area:", rectangle.Area())
+	fmt.Println("Perimeter:", rectangle.Perimeter())
+}
