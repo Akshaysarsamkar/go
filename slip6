@@ -1,0 +1,87 @@
+ Write a program in GO language to accept two matrices and display its multiplication
+package main
+import (
+ "fmt"
+)
+func main() {
+ fmt.Println("Enter the dimensions of the first matrix (m x n):")
+ fmt.Print("m: ")
+ fmt.Scanln(&m)
+ fmt.Print("n: ")
+ fmt.Scanln(&n)
+ fmt.Println("Enter the dimensions of the second matrix (p x q):")
+ fmt.Print("p: ")
+ fmt.Scanln(&p)
+ fmt.Print("q: ")
+ fmt.Scanln(&q)
+ if n != p {
+ fmt.Println("Matrix multiplication is not possible. The number of columns in the first matrix 
+must be equal to the number of rows in the second matrix.")
+ return
+ }
+ fmt.Println("Enter elements of the first matrix:")
+ firstMatrix := make([][]int, m)
+ for i := 0; i < m; i++ {
+ firstMatrix[i] = make([]int, n)
+ for j := 0; j < n; j++ {
+ fmt.Printf("Enter element [%d][%d]: ", i, j)
+ fmt.Scanln(&firstMatrix[i][j])
+ }
+ }
+ fmt.Println("Enter elements of the second matrix:")
+ secondMatrix := make([][]int, p)
+ for i := 0; i < p; i++ {
+ secondMatrix[i] = make([]int, q)
+ for j := 0; j < q; j++ {
+ fmt.Printf("Enter element [%d][%d]: ", i, j)
+ fmt.Scanln(&secondMatrix[i][j])
+ }
+ }
+ resultMatrix := make([][]int, m)
+ for i := range resultMatrix {
+ resultMatrix[i] = make([]int, q)
+ }
+ for i := 0; i < m; i++ {
+ for j := 0; j < q; j++ {
+ sum := 0
+ for k := 0; k < n; k++ {
+ sum += firstMatrix[i][k] * secondMatrix[k][j]
+ }
+ resultMatrix[i][j] = sum
+ }
+ }
+ fmt.Println("Result of matrix multiplication:")
+ for i := 0; i < m; i++ {
+ for j := 0; j < q; j++ {
+ fmt.Printf("%d\t", resultMatrix[i][j])
+ }
+ fmt.Println()
+ }
+}
+
+
+) Write a program in GO language to copy all elements of one array
+into another using a method.
+
+package main
+
+import "fmt"
+
+func main() {
+	// Source array
+	source := []int{1, 2, 3, 4, 5}
+
+	// Destination array
+	destination := make([]int, len(source))
+
+	// Copy elements using method
+	copyArray(source, destination)
+
+	// Print the destination array
+	fmt.Println("Destination Array:", destination)
+}
+
+// Function to copy elements of one array into another
+func copyArray(source []int, destination []int) {
+	for i := 0; i < len(source); i++ {
+		destination[i] =
