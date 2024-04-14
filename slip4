@@ -1,0 +1,43 @@
+Q. Write a program in GO language to print a recursive sum of digits of a given number. 
+package main
+import (
+ "fmt"
+)
+func recursiveSumOfDigits(num int) int {
+ 
+ if num < 10 {
+ return num
+ }
+ // Recursive case: sum the last digit with the sum of digits of the remaining number
+ return num%10 + recursiveSumOfDigits(num/10)
+}
+func main() {
+ var num int
+ fmt.Print("Enter a number: ")
+ fmt.Scanln(&num)
+ 
+ sum := recursiveSumOfDigits(num)
+ fmt.Println("Recursive Sum of Digits:", sum)
+}
+
+
+ Write a program in GO language to sort array elements in
+ascending order
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+	// Define an array of integers
+	arr := []int{9, 5, 7, 2, 4, 1, 8, 3, 6}
+
+	// Sort the array in ascending order
+	sort.Ints(arr)
+
+	// Print the sorted array
+	fmt.Println("Sorted array in ascending order:")
+	fmt.Println(arr)
+}
