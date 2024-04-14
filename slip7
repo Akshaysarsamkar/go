@@ -1,0 +1,65 @@
+Write a program in GO language to accept one matrix and display its transpose
+ package main
+import "fmt"
+func main() {
+ var m, n int
+ fmt.Println("Enter the dimensions of the matrix (m x n):")
+ fmt.Print("m: ")
+ fmt.Scanln(&m)
+ fmt.Print("n: ")
+ fmt.Scanln(&n)
+ fmt.Println("Enter elements of the matrix:")
+ matrix := make([][]int, m)
+ for i := 0; i < m; i++ {
+ matrix[i] = make([]int, n)
+ for j := 0; j < n; j++ {
+ fmt.Printf("Enter element [%d][%d]: ", i, j)
+ fmt.Scanln(&matrix[i][j])
+ }
+ }
+ fmt.Println("Original matrix:")
+ for i := 0; i < m; i++ {
+ for j := 0; j < n; j++ {
+ fmt.Printf("%d\t", matrix[i][j])
+ }
+ fmt.Println()
+ }
+ fmt.Println("Transpose of the matrix:")
+ for j := 0; j < n; j++ {
+ for i := 0; i < m; i++ {
+ fmt.Printf("%d\t", matrix[i][j])
+ }
+ fmt.Println()
+ }
+}
+
+
+
+
+
+package main
+
+import "fmt"
+
+// Define the structure Student
+type Student struct {
+	ID   int
+	Name string
+}
+
+// Method show() with a receiver of type pointer to Student
+func (s *Student) show() {
+	fmt.Printf("Student ID: %d\n", s.ID)
+	fmt.Printf("Student Name: %s\n", s.Name)
+}
+
+func main() {
+	// Create a new Student instance
+	student := Student{
+		ID:   1,
+		Name: "John Doe",
+	}
+
+	// Call the show() method on the Student instance
+	student.show()
+}
