@@ -1,0 +1,96 @@
+Write a program in GO language using a function to check whether the accepted number is 
+palindrome or not.
+package main
+import (
+"fmt"
+"strconv"
+func isPalindrome(num int) bool {
+// Convert number to string
+str := strconv.Itoa(num)
+// Initialize two pointers
+i := 0
+j := len(str) - 1
+for i < j {
+// If characters at pointers are not equal, return false
+if str[i] != str[j] {
+return false
+}
+i++
+j--
+}
+return true
+}
+func main() {
+var num int
+fmt.Print("Enter a number: ")
+fmt.Scanln(&num)
+if isPalindrome(num) {
+fmt.Println(num, "is a palindrome.")
+} else {
+fmt.Println(num, "is not a palindrome.")
+}
+}
+
+ Write a program in GO language to create an interface shape that
+includes area and volume. Implements these methods in square
+and rectangle type.
+package main
+
+import (
+	"fmt"
+)
+
+// Define the interface Shape
+type Shape interface {
+	Area() float64
+	Volume() float64
+}
+
+// Define the struct Square
+type Square struct {
+	Length float64
+}
+
+// Define the struct Rectangle
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
+
+// Implement the Area method for Square
+func (s Square) Area() float64 {
+	return s.Length * s.Length
+}
+
+// Implement the Volume method for Square
+func (s Square) Volume() float64 {
+	return 0 // Since Square is a 2D shape, volume is not applicable
+}
+
+// Implement the Area method for Rectangle
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
+}
+
+// Implement the Volume method for Rectangle
+func (r Rectangle) Volume() float64 {
+	return 0 // Since Rectangle is a 2D shape, volume is not applicable
+}
+
+func main() {
+	// Create a square
+	square := Square{Length: 5}
+
+	// Create a rectangle
+	rectangle := Rectangle{Width: 4, Height: 3}
+
+	// Calculate and print area for square
+	fmt.Println("Square:")
+	fmt.Println("Area:", square.Area())
+	fmt.Println("Volume:", square.Volume()) // Square doesn't have volume, so it's 0
+
+	// Calculate and print area for rectangle
+	fmt.Println("\nRectangle:")
+	fmt.Println("Area:", rectangle.Area())
+	fmt.Println("Volume:", rectangle.Volume()) // Rectangle doesn't have volume, so it's 0
+}
