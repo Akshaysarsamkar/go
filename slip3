@@ -1,0 +1,94 @@
+Q. Write a program in the GO language using function to check whether accepts number is 
+palindrome or not
+package main
+import (
+ "fmt"
+ "strconv"
+)
+func isPalindrome(num int) bool {
+ // Convert number to string
+ str := strconv.Itoa(num)
+ i := 0
+ j := len(str) - 1
+ 
+ // Iterate until pointers meet
+ for i < j {
+ 
+ if str[i] != str[j] {
+ return false
+ }
+ i++
+ j--
+ }
+ // If all characters are equal, return true
+ return true
+}
+func main() {
+ var num int
+ fmt.Print("Enter a number: ")
+ fmt.Scanln(&num)
+ 
+ if isPalindrome(num) {
+ fmt.Println(num, "is a palindrome.")
+ } else {
+ fmt.Println(num, "is not a palindrome.")
+ }
+}
+
+ Write a Program in GO language to accept n records of employee
+information (eno,ename,salary) and display record of employees
+having maximum salary.
+
+package main
+
+import (
+	"fmt"
+)
+
+type Employee struct {
+	Eno    int
+	Ename  string
+	Salary int
+}
+
+func main() {
+	var n int
+	fmt.Println("Enter the number of employees:")
+	fmt.Scanln(&n)
+
+	employees := make([]Employee, n)
+
+	// Input employee details
+	for i := 0; i < n; i++ {
+		fmt.Printf("\nEnter details for employee %d:\n", i+1)
+		fmt.Println("Employee Number:")
+		fmt.Scanln(&employees[i].Eno)
+
+		fmt.Println("Employee Name:")
+		fmt.Scanln(&employees[i].Ename)
+
+		fmt.Println("Salary:")
+		fmt.Scanln(&employees[i].Salary)
+	}
+
+	// Find maximum salary
+	maxSalary := employees[0].Salary
+	for i := 1; i < n; i++ {
+		if employees[i].Salary > maxSalary {
+			maxSalary = employees[i].Salary
+		}
+	}
+
+	// Display employees with maximum salary
+	fmt.Println("\nEmployees with Maximum Salary:")
+	for i := 0; i < n; i++ {
+		if employees[i].Salary == maxSalary {
+			fmt.Printf("Employee Number: %d\n", employees[i].Eno)
+			fmt.Printf("Employee Name: %s\n", employees[i].Ename)
+			fmt.Printf("Salary: %d\n", employees[i].Salary)
+			fmt.Println()
+		}
+	}
+}
+
+
